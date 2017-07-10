@@ -1,0 +1,30 @@
+﻿html, body {
+    margin: 0;
+    padding: 0;
+}
+
+@font-face {
+    font-family: Ralington; /* Гарнитура шрифта */
+    src: url("~/fonts/Ralington.otf"); /* Путь к файлу со шрифтом */
+}
+
+@font-face {
+    font-family: RobotoBold; /* Гарнитура шрифта */
+    src: url("~/fonts/RobotoBold.ttf"); /* Путь к файлу со шрифтом */
+}
+
+@font-face {
+    font-family: RobotoMedium; /* Гарнитура шрифта */
+    src: url("~/fonts/RobotoMedium.ttf"); /* Путь к файлу со шрифтом */
+}
+
+@font-face {
+    font-family: RobotoLight; /* Гарнитура шрифта */
+    src: url("~/fonts/RobotoLight.ttf"); /* Путь к файлу со шрифтом */
+}
+
+@font-face {
+    font-family: RobotoRegular; /* Гарнитура шрифта */
+    src: url("~/fonts/RobotoRegular.ttf"); /* Путь к файлу со шрифтом */
+}
+

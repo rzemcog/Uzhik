@@ -1,0 +1,70 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+<div class="header">
+    <div class="headerbg"></div>
+    <div class="headerbg1"></div>
+    <div class="headerlogo">
+        <a href="/">
+            <img src="~/Content/Images/logo.png" class="logo">
+        </a>
+    </div>
+    <div class="uzhik">
+        <p>UZHIK</p>
+    </div>
+    <div class="lk">
+        <button class="butstyle">Личный кабинет</button>
+    </div>
+    <div class="logout">
+        <button class="butstyle">Выйти</button>
+    </div>
+
+</div>
+<div class="search">
+    <form>
+        <input id="search" type="search" placeholder="Введите название товара">
+    </form>
+</div>
+<div class="submit">
+    <form>
+        <input id="submit" type="submit" value="Найти">
+    </form>
+</div>
+<div class="field">
+    <div class="fieldProduct"></div>
+    <div class="fieldphoto"></div>
+    <div class="fieldname">
+        <p>Название товара</p>
+    </div>
+    <div class="fieldprice">
+        <p>Цена</p>
+    </div>
+    <div class="fieldtext">
+        <p>Подписаться на отслеживание</p>
+    </div>
+    <div class="fieldcheck">
+        <form>
+            <input id="check" type="checkbox" style="transform: scale(2)">
+        </form>
+    </div>
+    <div class="modal">
+        <a href="#win1" class="button">Настройки</a>
+        <a href="#x" class="overlay" id="win1"></a>
+        <div class="popup">
+            <form>
+                <p id="set">Настройки</p>
+                <hr>
+                <p id="text">Выберите филиал магазина</p>
+                <hr>
+                <p id="text">Выберите тип оповещения</p>
+                <button class="butstyle">Сохранить</button>
+            </form>
+            <a class="close" title="Закрыть" href="#close"></a>
+        </div>
+    </div>
+
+    <div class="savebut">
+        <button сlass="butstyle">Сохранить</button>
+    </div>
+</div>

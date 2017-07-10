@@ -1,0 +1,106 @@
+﻿body {
+    background-color: #F2F2F2;
+}
+
+header {
+    background-color: #404040;
+    border-bottom: 3px solid #606060;
+}
+
+img {
+    margin: 0px 0px 0px 300px;
+    height: 70px;
+}
+
+.container {
+    margin: 100px auto;
+}
+
+.login {
+    position: relative;
+    margin: 50px 250px 50px 550px;
+    width: 310px;
+    background: white;
+}
+
+.buttons {
+    width: 310px;
+    margin: 0px 0px 30px 0px;
+}
+
+.login button {
+    width: 155px;
+    line-height: 40px;
+    font-family: "RobotoBold";
+    font-size: 20px;
+    font-weight: bold;
+    color: #000000;
+    text-align: center;
+    border: 0px;
+    padding: 5px 15px 5px 15px;
+}
+
+button:active {
+    background: #cde5ef;
+}
+
+.aut {
+    background-color: #FFFFFF;
+}
+
+.reg {
+    background-color: #00BDF2;
+}
+
+.login p:first-child {
+    margin-top: 0;
+}
+
+.login input[type=text], .login input[type=password] {
+    width: 280px;
+    margin: 4px 14px;
+}
+
+.login p.submit {
+    text-align: center;
+}
+
+input {
+    font-family: 'RobotoLight', Tahoma, Verdana, sans-serif;
+    font-size: 14px;
+}
+
+input[type=text], input[type=password] {
+        width: 200px;
+        height: 34px;
+        color: #404040;
+        background: white;
+        border: 1px solid;
+    }
+
+input[type=text]:focus, input[type=password]:focus {
+            border-color: #00BDF2;
+        }
+
+input[type=submit] {
+        height: 35px;
+        font-family: "RobotoMedium";
+        font-size: 20px;
+        color: #FFFFFF;
+        background: #00BDF2;
+        border: 1px solid;
+        margin: 0px 0px 10px 0px;
+        padding: 0px 20px;
+    }
+
+input[type=submit]:active {
+            background: #cde5ef;
+}
+
+.aut-error{
+    font-family:  "RobotoBold";
+    font-size: 20px;
+    color: orange;
+    line-height: 1.2;
+
+}

@@ -1,0 +1,16 @@
+﻿footer {
+
+    border: 0px solid;
+    border-top-color: rgb(96, 96, 96);
+    border-top-width: 3px;
+    background: rgb(64, 64, 64);
+    height: 75px;
+}
+
+footer p {
+        font-size: 20px;
+        font-family: "Roboto Medium";
+        color: rgb(255, 255, 255);
+        line-height: 1.2;
+        text-align: center;
+}
