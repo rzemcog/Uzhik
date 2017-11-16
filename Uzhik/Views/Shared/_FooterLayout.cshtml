@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>@ViewData["Title"]</title>
+
+
+    <link rel="stylesheet" href="~/css/bootstrap.css">
+    <link rel="stylesheet" href="~/css/style.css">
+
+    <style>
+        @@font-face {
+            font-family: Ralington; /* Гарнитура шрифта */
+            src: url(/font/Ralington.otf); /* Путь к файлу со шрифтом */
+        }
+
+        @@font-face {
+            font-family: RobotoBold; /* Гарнитура шрифта */
+            src: url(/font/RobotoBold.ttf); /* Путь к файлу со шрифтом */
+        }
+
+        @@font-face {
+            font-family: RobotoMedium; /* Гарнитура шрифта */
+            src: url(/font/RobotoMedium.ttf); /* Путь к файлу со шрифтом */
+        }
+
+        @@font-face {
+            font-family: RobotoLight; /* Гарнитура шрифта */
+            src: url(/font/RobotoLight.ttf); /* Путь к файлу со шрифтом */
+        }
+
+        @@font-face {
+            font-family: RobotoRegular; /* Гарнитура шрифта */
+            src: url(/font/RobotoRegular.ttf); /* Путь к файлу со шрифтом */
+        }
+
+        .b1 {
+            color: white; /* Белые буквы */
+            font-size: 9pt; /* Размер шрифта в пунктах */
+        }
+    </style>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Месяц', 'Цена'],
+                ['06', 8000],
+                ['07', 8170],
+                ['08', 8600],
+                ['09', 9000]
+            ]);
+            var options = {
+                chart: {
+                    title: 'Стоимость',
+                    curveType: 'function',
+                    legend: { position: 'bottom' }
+                },
+                width: 550,
+                height: 400,
+                axes: {
+                    x: {
+                        0: { side: 'top' }
+                    }
+                }
+            };
+
+            var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+            chart.draw(data, options);
+        }
+    </script>
+</head>
+<body>
+
+    @RenderBody()
+    <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="textfooter">
+                        <p>Выполнили студенты группы ИВТ-301</p>
+                        <p>Кавтаскин Павел, Луньков Евгений, Субхангулов Даян</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+</body>
+</html>

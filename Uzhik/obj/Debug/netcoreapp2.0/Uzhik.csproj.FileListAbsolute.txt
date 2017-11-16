@@ -1,0 +1,22 @@
+C:\Users\Евгений\source\repos\Uzhik\Uzhik\bin\Debug\netcoreapp2.0\Uzhik.deps.json
+C:\Users\Евгений\source\repos\Uzhik\Uzhik\bin\Debug\netcoreapp2.0\Uzhik.runtimeconfig.json
+C:\Users\Евгений\source\repos\Uzhik\Uzhik\bin\Debug\netcoreapp2.0\Uzhik.runtimeconfig.dev.json
+C:\Users\Евгений\source\repos\Uzhik\Uzhik\bin\Debug\netcoreapp2.0\Uzhik.dll
+C:\Users\Евгений\source\repos\Uzhik\Uzhik\bin\Debug\netcoreapp2.0\Uzhik.pdb
+C:\Users\Евгений\source\repos\Uzhik\Uzhik\obj\Debug\netcoreapp2.0\Uzhik.csprojResolveAssemblyReference.cache
+C:\Users\Евгений\source\repos\Uzhik\Uzhik\obj\Debug\netcoreapp2.0\Uzhik.csproj.CoreCompileInputs.cache
+C:\Users\Евгений\source\repos\Uzhik\Uzhik\obj\Debug\netcoreapp2.0\Uzhik.AssemblyInfoInputs.cache
+C:\Users\Евгений\source\repos\Uzhik\Uzhik\obj\Debug\netcoreapp2.0\Uzhik.AssemblyInfo.cs
+C:\Users\Евгений\source\repos\Uzhik\Uzhik\obj\Debug\netcoreapp2.0\Uzhik.dll
+C:\Users\Евгений\source\repos\Uzhik\Uzhik\obj\Debug\netcoreapp2.0\Uzhik.pdb
+D:\1. Развитие\Практики\Проекты\Uzhik\Uzhik\bin\Debug\netcoreapp2.0\Uzhik.deps.json
+D:\1. Развитие\Практики\Проекты\Uzhik\Uzhik\bin\Debug\netcoreapp2.0\Uzhik.runtimeconfig.json
+D:\1. Развитие\Практики\Проекты\Uzhik\Uzhik\bin\Debug\netcoreapp2.0\Uzhik.runtimeconfig.dev.json
+D:\1. Развитие\Практики\Проекты\Uzhik\Uzhik\bin\Debug\netcoreapp2.0\Uzhik.dll
+D:\1. Развитие\Практики\Проекты\Uzhik\Uzhik\bin\Debug\netcoreapp2.0\Uzhik.pdb
+D:\1. Развитие\Практики\Проекты\Uzhik\Uzhik\obj\Debug\netcoreapp2.0\Uzhik.csprojResolveAssemblyReference.cache
+D:\1. Развитие\Практики\Проекты\Uzhik\Uzhik\obj\Debug\netcoreapp2.0\Uzhik.csproj.CoreCompileInputs.cache
+D:\1. Развитие\Практики\Проекты\Uzhik\Uzhik\obj\Debug\netcoreapp2.0\Uzhik.AssemblyInfoInputs.cache
+D:\1. Развитие\Практики\Проекты\Uzhik\Uzhik\obj\Debug\netcoreapp2.0\Uzhik.AssemblyInfo.cs
+D:\1. Развитие\Практики\Проекты\Uzhik\Uzhik\obj\Debug\netcoreapp2.0\Uzhik.dll
+D:\1. Развитие\Практики\Проекты\Uzhik\Uzhik\obj\Debug\netcoreapp2.0\Uzhik.pdb

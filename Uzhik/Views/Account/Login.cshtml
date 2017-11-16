@@ -1,0 +1,53 @@
+﻿@model LoginModel
+@{
+    ViewData["title"] = "Авторизация";  
+}
+
+<body>
+<div class="container autreg">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-login">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <a href="#" class="active" id="login-form-link">Авторизация</a>
+                        </div>
+                        <div class="col-xs-6">
+                            <a asp-action="Register" asp-controller="Account" id="register-form-link">Регистрация</a>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <form id="login-form" asp-action="Login" asp-controller="Account" asp-antiforgery="true" method="post" role="form" style="display: block;">
+                                <div class="validation" asp-validation-summary="ModelOnly"></div>
+                                <div class="form-group">
+                                    <input type="text" asp-for="Email" name="Email" id="username" tabindex="1" class="form-control" placeholder="Email">
+                                    <span asp-validation-for="Email" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" asp-for="Password" name="Password" id="password" tabindex="2" class="form-control" placeholder="Пароль">
+                                    <span asp-validation-for="Password" />
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-sm-6 col-sm-offset-3">
+                                            <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Войти">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="js/bootstrap.js"></script>
+</body>
