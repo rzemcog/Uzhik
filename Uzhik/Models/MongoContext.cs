@@ -36,7 +36,7 @@ namespace Uzhik.Models
             return await Collection.Find(new BsonDocument()).ToListAsync();
         }
 
-        public async Task<IEnumerable<T>> GetFilteredCollection(FilterDefinition<T> filter)
+        public async Task<IEnumerable<T>> GetFilteredCollection(BsonDocument filter)
         {
             return await Collection.Find(filter).ToListAsync();
         }

@@ -21,17 +21,12 @@ namespace Uzhik.Controllers
         }
 
         [HttpGet]
-        public IActionResult Login()
+        public IActionResult Authorization()
         {
             return View();
         }
 
 
-        [HttpGet]
-        public IActionResult Register()
-        {
-            return View();
-        }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -39,7 +34,9 @@ namespace Uzhik.Controllers
         {
             if(ModelState.IsValid)
             {
+
                 var users = await _context.GetCollection();
+
                 User user = users.FirstOrDefault(u => u.Email == loginModel.Email);
                 if(user != null)
                 {
@@ -49,7 +46,7 @@ namespace Uzhik.Controllers
                 ModelState.AddModelError("", "Некоррекные логин и(или) пароль");
 
             }
-            return View(loginModel);
+            return View("Authorization");
         }
 
 
@@ -76,7 +73,7 @@ namespace Uzhik.Controllers
                 else
                     ModelState.AddModelError("", "Данная почта занята");
             }
-            return View(registerModel);
+            return View("Authorization");
         }
 
         private async Task Authenticate(string userEmail)
@@ -97,7 +94,7 @@ namespace Uzhik.Controllers
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            return RedirectToAction("Login", "Account");
+            return RedirectToAction("Authorization", "Account");
         }
     }
 }

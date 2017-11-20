@@ -25,12 +25,17 @@ namespace Uzhik
         //настройка сервисов
         public void ConfigureServices(IServiceCollection services)
         {
-            string connection = Configuration.GetConnectionString("DefaultConnection");
+            string connection = Configuration.GetConnectionString("RemoteConnection");
             services.AddTransient(provider =>
             {
-                string collectionName = "Users";
-                string connectionString = Configuration.GetConnectionString("DefaultConnection");
-                return new MongoContext<User>(connectionString, collectionName);
+                string collectionName = "users";
+                return new MongoContext<User>(connection, collectionName);
+            });
+
+            services.AddTransient(provider =>
+            {
+                string collectionName = "items";
+                return new MongoContext<Product>(connection, collectionName);
             });
 
 
@@ -38,7 +43,7 @@ namespace Uzhik
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options => //CookieAuthenticationOptions
                 {
-                    options.LoginPath = new PathString("/Account/Login");
+                    options.LoginPath = new PathString("/Account/Authorization");
                 });
 
             services.AddMvc();
@@ -62,10 +67,6 @@ namespace Uzhik
             // app.UseDefaultFiles();
              app.UseStaticFiles();
              app.UseAuthentication();
-
-
-
-
 
             app.UseMvc(routes =>
             {

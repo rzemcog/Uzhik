@@ -9,6 +9,11 @@ namespace Uzhik.Models
 {
     public class Product:IMongoDocument
     {
+        public Product()
+        {
+
+        }
+
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
         [BsonElement("name")]
@@ -17,10 +22,13 @@ namespace Uzhik.Models
         public string Image { get; set; }
         [BsonElement("link")]
         public string Link { get; set; }
-        [BsonElement("available")]
+        [BsonElement("avalaible")]
         public bool Available { get; set; }
         [BsonElement("history")]
-        public List<History> History;
+        public History History { get; set; }
+
+        [BsonIgnore]
+        public string Price { get; set; }
     }
 
     public class History

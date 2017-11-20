@@ -6,7 +6,7 @@
 
 
     <link rel="stylesheet" href="~/css/bootstrap.css">
-    <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="~/css/styles.css">
 
     <style>
         @@font-face {
@@ -40,38 +40,8 @@
         }
     </style>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-        google.charts.load('current', { 'packages': ['corechart'] });
-        google.charts.setOnLoadCallback(drawChart);
+   
 
-        function drawChart() {
-            var data = google.visualization.arrayToDataTable([
-                ['Месяц', 'Цена'],
-                ['06', 8000],
-                ['07', 8170],
-                ['08', 8600],
-                ['09', 9000]
-            ]);
-            var options = {
-                chart: {
-                    title: 'Стоимость',
-                    curveType: 'function',
-                    legend: { position: 'bottom' }
-                },
-                width: 550,
-                height: 400,
-                axes: {
-                    x: {
-                        0: { side: 'top' }
-                    }
-                }
-            };
-
-            var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
-
-            chart.draw(data, options);
-        }
-    </script>
 </head>
 <body>
 

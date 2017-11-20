@@ -1,0 +1,36 @@
+﻿@model Product
+@{
+    Layout = null;
+}
+
+
+
+    <div class=" product container">
+        <div class="row">
+            <div class="row col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                <img class="picture" src="@Model.Image">
+            </div>
+            <div class="row col-lg-7 col-md-7 col-sm-7 col-xs-7">
+                <div class="name">
+                    <a href="@Model.Link"><p>@Model.Name</p></a>
+                </div>
+                <div class="btnsave">
+                    <div class="row col-lg-5 col-md-5 col-sm-5 col-xs-5"></div>
+                    <div class="row col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                           <input type="hidden" value="@Model.Id" name="id" />
+                           <input id="button-@Model.Id" type="submit" value="Добавить к отслеживанию" class="btn btn-info">                    
+                    </div>
+                </div>
+            </div>
+            <div class="row col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                <div class="price"><p><b>Цена @Model.History.Price &#8381</b></p></div>
+                <div class="settings">
+                    <button type="button" id="ModalButton-@Model.Id" class="btn-1 btn btn-info" data-toggle="modal" data-target="#modal-@Model.Id"> Настройки </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
