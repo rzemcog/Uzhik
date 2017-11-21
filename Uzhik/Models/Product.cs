@@ -27,8 +27,7 @@ namespace Uzhik.Models
         [BsonElement("history")]
         public History History { get; set; }
 
-        [BsonIgnore]
-        public string Price { get; set; }
+
     }
 
     public class History

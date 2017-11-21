@@ -2,7 +2,8 @@
 @{
     ViewData["title"] = "Главная";
     Layout = "_FooterLayout";
-    Product Product = new Product();
+
+   
 }   
 
 <body>
@@ -51,11 +52,11 @@
         @if (ViewBag.Products != null)
         {
 
-                @foreach (Product product in ViewBag.Products)
+                @foreach (NotificationSettingsModel NSModel in ViewBag.Products)
                 {
                     <form asp-action="MonitorProduct" asp-controller="Main">
-                        @Html.Partial("/Views/Product/_Product.cshtml", product);
-                        @Html.Partial("/Views/Product/_NotificationSettings.cshtml", product)
+                        @Html.Partial("/Views/Product/_Product.cshtml", NSModel);
+                        @Html.Partial("/Views/Product/_NotificationSettings.cshtml", NSModel)
                     </form>
                 }
 

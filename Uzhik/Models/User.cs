@@ -7,6 +7,8 @@ using MongoDB.Driver;
 using MongoDB.Driver.GridFS;
 using MongoDB.Bson.Serialization.Attributes;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Uzhik.Models
 {
@@ -14,22 +16,25 @@ namespace Uzhik.Models
     { 
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
-        [Display(Name = "Имя")]
+        [BsonElement("Name")]
         public string Name { get; set; }
-        [Display(Name = "Пароль")]
+        [BsonElement("Password")]
         public string Password { get; set; }
-        [Display(Name = "Email")]
+        [BsonElement("Email")]
         public string Email { get; set; }
 
-        [Display(Name = "Products")]
+        [BsonElement("MonitoredProducts")]
         public List<MonitoredProduct> MonitoredProducts = new List<MonitoredProduct>();
 
     }
 
+
     public class MonitoredProduct
     {
+        [BsonElement("NotificationSettings")]
         public NotificationSettings NotificationSettings { get; set; }
 
+        [BsonElement("ProductId")]
         public string ProductId { get; set; }
 
     }
@@ -44,12 +49,13 @@ namespace Uzhik.Models
     {
         public List<Shop> Shops = new List<Shop>();
 
+        [BsonElement("Availability")]
         public bool Availability { get; set; }
-
+        [BsonElement("PriceChanging")]
         public bool PriceChanging { get; set; }
-
+        [BsonElement("NecessaryPrice")]
         public string NecessaryPrice { get; set; }
-
+        [BsonElement("Sign")]
         public Sign Sign { get; set; }
     }
 }

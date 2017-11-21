@@ -12,6 +12,7 @@ namespace Uzhik.Models
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
 
+        [BsonElement("address")]
         public string Address { get; set; }
     }
 }

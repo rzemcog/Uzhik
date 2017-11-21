@@ -1,13 +1,19 @@
-﻿@model Product
+﻿@model NotificationSettingsModel
 @{
     Layout = null;
-    var NotificationSettings = new NotificationSettings();
+    string RequestName;
+    if (ViewBag.RequestName == null)
+    {
+        RequestName = Model.Product.Name;
+    }
+    else
+    {
+        RequestName = ViewBag.RequestName;
+    }
+
 }
 
-
-
-
-    <div class="modal" id="modal-@Model.Id">
+    <div class="modal" id="modal-@Model.Product.Id">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -15,7 +21,7 @@
                     <h4>Настройки</h4>
                 </div>
                 <div class="modal-body">
-                    <a class="btn btn-link" type="button" data-toggle="collapse" href="#collapse-1-@Model.Id">
+                    <a class="btn btn-link" type="button" data-toggle="collapse" href="#collapse-1-@Model.Product.Id">
                         Выберите филиал магазина<span class="caret"></span>
                     </a>
 
@@ -39,10 +45,10 @@
                     </div>*@
 
                     <br>
-                    <a class="btn btn-link" type="button" data-toggle="collapse" href="#collapse-2-@Model.Id">
+                    <a class="btn btn-link" type="button" data-toggle="collapse" href="#collapse-2-@Model.Product.Id">
                         Выберите тип оповещения<span class="caret"></span>
                     </a>
-                    <div class="collapse notification" id="collapse-2-@Model.Id">
+                    <div class="collapse notification" id="collapse-2-@Model.Product.Id">
                         <div class="row">
                             <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
                             <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
@@ -51,8 +57,18 @@
                                 </div>
                             </div>
                             <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-                                <div class="notcheck">     
-                                    <input asp-for="@NotificationSettings.Availability" name="notificationSettings.Availability" id="check" checked="checked" type="checkbox" value ="true" style="transform: scale(2)"> 
+                                <div class="notcheck">   
+                                    @if (Model.NotificationSettings !=null && Model.NotificationSettings.Availability)
+                                    {
+                                        <input asp-for="@Model.NotificationSettings.Availability" name="notificationSettings.Availability" 
+                                               id="check" checked="checked" type="checkbox" value="true" style="transform: scale(2)">
+                                    }
+                                    else
+                                    {
+                                        <input asp-for="@Model.NotificationSettings.Availability" name="notificationSettings.Availability" id="check"
+                                               type="checkbox" value="true" style="transform: scale(2)">
+                                    }
+                                   
                                 </div>
                             </div>
                         </div>
@@ -65,24 +81,55 @@
                             </div>
                             <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
                                 <div class="notcheck">
-                                        <input asp-for="@NotificationSettings.PriceChanging" name="notificationSettings.PriceChanging" id="check" type="checkbox" value="true" style="transform: scale(2)">
+                                    @if (Model.NotificationSettings != null && Model.NotificationSettings.PriceChanging)
+                                    {
+                                        <input asp-for="@Model.NotificationSettings.PriceChanging" checked="checked" 
+                                               name="notificationSettings.PriceChanging" id="check" type="checkbox" value="true" style="transform: scale(2)">
+                                    }
+                                    else
+                                    {
+                                        <input asp-for="@Model.NotificationSettings.PriceChanging"
+                                                name="notificationSettings.PriceChanging" id="check" type="checkbox" value="true" style="transform: scale(2)">
+                                    }
                                 </div>
                             </div>
 
                             <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
                                 <div class="styled-select slate">
-                                    <select asp-for="@NotificationSettings.Sign" name="notificationSettings.Sign">
-                                        <option value="@Sign.LessOrEqual"><=</option>
-                                        <option value="@Sign.BiggerOrEqual">=</option>
-                                    </select>
+                                    @if (Model.NotificationSettings != null && Model.NotificationSettings.Sign == Sign.BiggerOrEqual)
+                                    {
+                                        <select asp-for="@Model.NotificationSettings.Sign" name="notificationSettings.Sign">
+                                            <option value="@Sign.LessOrEqual" ><=</option>
+                                            <option value="@Sign.BiggerOrEqual" selected="selected">=</option>
+                                        </select>
+                                    }
+                                    else
+                                    {
+                                        <select asp-for="@Model.NotificationSettings.Sign" name="notificationSettings.Sign">
+                                            <option value="@Sign.LessOrEqual" selected="selected"><=</option>
+                                            <option value="@Sign.BiggerOrEqual">=</option>
+                                        </select>
+                                    }
+
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                                <input asp-for="@NotificationSettings.NecessaryPrice" name="notificationSettings.NecessaryPrice" type="text" placeholder="Введите цену в &#8381">
+                                @if (Model.NotificationSettings != null && Convert.ToInt32(Model.NotificationSettings.NecessaryPrice) > 2)
+                                {
+
+                                    <input asp-for="@Model.NotificationSettings.NecessaryPrice" value="@Model.NotificationSettings.NecessaryPrice"
+                                           name="notificationSettings.NecessaryPrice" type="text" placeholder="Введите цену в &#8381">
+                                }
+                                else
+                                {
+                                    <input asp-for="@Model.NotificationSettings.NecessaryPrice" value="2"
+                                           name="notificationSettings.NecessaryPrice" type="text" placeholder="Введите цену в &#8381">
+                                }
+                          
                             </div>
                         </div>
 
-                        <input type="text" name="name" value="@Model.Name" hidden="hidden"/>
+                        <input type="text" name="name" value="@RequestName" hidden="hidden"/>
                         @*<div class="row">
                             <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
                             <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
@@ -101,6 +148,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
+                    <input type="hidden" value="@Model.Product.Id" name="id" />
                     <button type="submit" class="btn btn-info">Сохранить</button>
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Отменить</button>
                 </div>

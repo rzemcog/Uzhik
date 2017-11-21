@@ -17,12 +17,12 @@ namespace Uzhik.CustomMiddleware
             _next = next;
         }
 
-        public Task Invoke(HttpContext httpContext, INotificationSender sender)
-        {
-            var message = "message"; 
+        //public Task Invoke(HttpContext httpContext, INotificationSender sender)
+        //{
+        //    var message = "message"; 
 
-            return sender.Send(message);
-        }
+        //    return sender.Send(message);
+        //}
 
     }
 }

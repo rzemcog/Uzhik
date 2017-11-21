@@ -10,7 +10,7 @@
         </div>
         <div class=" col-lg-7 col-md-7 col-sm-7 col-xs-7">
             <div class="name">
-                <p>@Model.Name</p>
+                <a href="@Model.Link"><p>@Model.Name</p></a>
             </div>
             <div class="setting">
                 <div class="row col-lg-4 col-md-4 col-sm-4 col-xs-4">
@@ -25,7 +25,7 @@
                 <button type="button" class="btn-1 btn btn-info" data-toggle="modal" data-target="#modal-2-@Model.Id">Динамика</button>
             </div>
             <div class="unsub">
-                <a asp-action="StopMonitoringProduct" asp-controller="PersonalCabinet" asp-route-data="@Model.Id" ><button type="button" class="btn-1 btn btn-danger">Удалить</button></a>
+                <a asp-action="StopMonitoringProduct" asp-controller="PersonalCabinet" asp-all-route-data='new Dictionary<string,string>{{"Sender", "PersonalCabinet"}, {"Id", @Model.Id}}' ><button type="button" class="btn-1 btn btn-danger">Удалить</button></a>
             </div>
         </div>
     </div>

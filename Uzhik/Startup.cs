@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Uzhik.Models;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Uzhik.Services;
 
 namespace Uzhik
 {
@@ -37,6 +38,8 @@ namespace Uzhik
                 string collectionName = "items";
                 return new MongoContext<Product>(connection, collectionName);
             });
+
+           // services.AddTransient<INotificationSender, EmailNotificationSender>();
 
 
             // установка конфигурации подключения

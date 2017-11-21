@@ -8,6 +8,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Uzhik.Models;
+using Uzhik.Services;
 using Uzhik.ViewModels;
 
 namespace Uzhik.Controllers
@@ -15,6 +16,7 @@ namespace Uzhik.Controllers
     public class AccountController:Controller
     {
         MongoContext<User> _context;
+        EmailNotificationSender _notificationSender;
         public AccountController(MongoContext<User> context)
         {
             _context = context;
@@ -67,6 +69,8 @@ namespace Uzhik.Controllers
                         Email = registerModel.Email
                     };
                     await _context.Create(user);
+                    _notificationSender = new EmailNotificationSender("rzemcog@mail.ru", user.Email);
+                    _notificationSender.Send("Welcome to our system!");
                     await Authenticate(user.Email);
                     return RedirectToAction("Index", "Main");
                 }

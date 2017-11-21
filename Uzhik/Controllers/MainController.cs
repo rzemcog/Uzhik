@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Uzhik.Models;
+using Uzhik.ViewModels;
 
 namespace Uzhik.Controllers
 {
@@ -14,30 +15,44 @@ namespace Uzhik.Controllers
     {
         MongoContext<Product> _products;
         MongoContext<User> _users;
-        List<NotificationSettings> notificationSettings;
-        List<Product> products;
+        List<NotificationSettingsModel> notificationModel;
+
 
         public MainController(MongoContext<Product> products, MongoContext<User> users)
         {
             _products = products;
             _users = users;
-            notificationSettings = new List<NotificationSettings>();
-            this.products = new List<Product>();
+            notificationModel = new List<NotificationSettingsModel>();           
         }
 
 
+        private async Task<User> GetUser()
+        {
+            return (await _users.GetCollection()).FirstOrDefault(u => u.Email == User.Identity.Name);
+        }
 
         [Authorize]
         public IActionResult Index()
         {
           
             return View();
-        }
+        }   
+
 
         [HttpGet]
         public async Task<IActionResult> ShowProduct(string name)
         {
-            ViewBag.Products = (await _products.GetFilteredCollection(new BsonDocument())).Where(p => p.Name.Contains(name));
+            var products = (await _products.GetFilteredCollection(new BsonDocument())).Where(p => p.Name.Contains(name));
+            var user = await GetUser();
+            foreach (Product product in products)
+            {
+                NotificationSettings notificationSettings = null;
+                var monitoredProduct = user.MonitoredProducts.FirstOrDefault(p => p.ProductId == product.Id);
+                if (monitoredProduct != null) notificationSettings = monitoredProduct.NotificationSettings; 
+                notificationModel.Add(new NotificationSettingsModel() { Product = product, NotificationSettings = notificationSettings });
+            }
+            ViewBag.Products = notificationModel; 
+            ViewBag.RequestName = name;
             return View("Index");
         }
 
@@ -46,7 +61,7 @@ namespace Uzhik.Controllers
         [HttpPost]
         public async Task<IActionResult> MonitorProduct(string id, NotificationSettings notificationSettings, string name)
         {
-            var user = (await _users.GetCollection()).FirstOrDefault(u => u.Email == User.Identity.Name);
+            var user = await GetUser();
             var monitoredProduct = user.MonitoredProducts.FirstOrDefault(m=>m.ProductId == id);
             if (monitoredProduct == null) user.MonitoredProducts.Add(new MonitoredProduct() { ProductId = id, NotificationSettings = notificationSettings });
             else monitoredProduct.NotificationSettings = notificationSettings;

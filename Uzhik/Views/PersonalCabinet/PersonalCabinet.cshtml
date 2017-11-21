@@ -2,6 +2,7 @@
     ViewData["title"] = "Личный кабинет";
     Layout = "_FooterLayout";
 }
+
     
 <body>
 
@@ -45,17 +46,19 @@
         </div>
     </form>
     
-
-      @if(ViewBag.MonitoredProducts!=null)
-      {
-          foreach (Product product in ViewBag.MonitoredProducts)
-          {
-              @Html.Partial("/Views/Product/_MonitoredProduct.cshtml", product);
-              @Html.Partial("/Views/Product/_NotificationSettings.cshtml", product);
-              @Html.Partial("/Views/Product/_PriceDynamics.cshtml", product);
-          }
-      }
-
+    
+        @if (ViewBag.MonitoredProducts != null)
+        {
+            foreach (NotificationSettingsModel NSModel in ViewBag.MonitoredProducts)
+            {
+                @Html.Partial("/Views/Product/_MonitoredProduct.cshtml", NSModel.Product);
+                <form asp-action="ChangeSettings" asp-controller="PersonalCabinet" method="post">
+                    @Html.Partial("/Views/Product/_NotificationSettings.cshtml", NSModel);
+                </form>
+                @Html.Partial("/Views/Product/_PriceDynamics.cshtml", NSModel.Product);
+            }
+        }
+   
        <br />
      
 
