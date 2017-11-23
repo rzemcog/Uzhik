@@ -1,0 +1,13 @@
+D:\1. Развитие\Практики\Проекты\Uzhik\Uzhik\obj\Release\netcoreapp2.0\Uzhik.csprojResolveAssemblyReference.cache
+D:\1. Развитие\Практики\Проекты\Uzhik\Uzhik\obj\Release\netcoreapp2.0\Uzhik.csproj.CoreCompileInputs.cache
+D:\1. Развитие\Практики\Проекты\Uzhik\Uzhik\obj\Release\netcoreapp2.0\Uzhik.AssemblyInfoInputs.cache
+D:\1. Развитие\Практики\Проекты\Uzhik\Uzhik\obj\Release\netcoreapp2.0\Uzhik.AssemblyInfo.cs
+D:\1. Развитие\Практики\Проекты\Uzhik\Uzhik\bin\Release\netcoreapp2.0\Uzhik.deps.json
+D:\1. Развитие\Практики\Проекты\Uzhik\Uzhik\bin\Release\netcoreapp2.0\Uzhik.runtimeconfig.json
+D:\1. Развитие\Практики\Проекты\Uzhik\Uzhik\bin\Release\netcoreapp2.0\Uzhik.runtimeconfig.dev.json
+D:\1. Развитие\Практики\Проекты\Uzhik\Uzhik\bin\Release\netcoreapp2.0\Uzhik.dll
+D:\1. Развитие\Практики\Проекты\Uzhik\Uzhik\bin\Release\netcoreapp2.0\Uzhik.pdb
+D:\1. Развитие\Практики\Проекты\Uzhik\Uzhik\bin\Release\netcoreapp2.0\Scrypt.dll
+D:\1. Развитие\Практики\Проекты\Uzhik\Uzhik\bin\Release\netcoreapp2.0\Scrypt.pdb
+D:\1. Развитие\Практики\Проекты\Uzhik\Uzhik\obj\Release\netcoreapp2.0\Uzhik.dll
+D:\1. Развитие\Практики\Проекты\Uzhik\Uzhik\obj\Release\netcoreapp2.0\Uzhik.pdb

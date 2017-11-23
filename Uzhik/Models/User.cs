@@ -22,6 +22,8 @@ namespace Uzhik.Models
         public string Password { get; set; }
         [BsonElement("Email")]
         public string Email { get; set; }
+        [BsonElement("RandomWord")]
+        public string RandomWord { get; set; }
 
         [BsonElement("MonitoredProducts")]
         public List<MonitoredProduct> MonitoredProducts = new List<MonitoredProduct>();

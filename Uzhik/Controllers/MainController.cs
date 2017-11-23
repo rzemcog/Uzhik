@@ -31,6 +31,8 @@ namespace Uzhik.Controllers
             return (await _users.GetCollection()).FirstOrDefault(u => u.Email == User.Identity.Name);
         }
 
+   
+
         [Authorize]
         public IActionResult Index()
         {
@@ -40,33 +42,42 @@ namespace Uzhik.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> ShowProduct(string name)
+        public async Task<IActionResult> ShowProduct(string name, string page="1")
         {
-            var products = (await _products.GetFilteredCollection(new BsonDocument())).Where(p => p.Name.Contains(name));
+            var products = (await _products.GetFilteredCollection(new BsonDocument())).Where(p => (p.Name.ToLower()).Contains(name.ToLower())).ToArray();
             var user = await GetUser();
-            foreach (Product product in products)
+            int pageInt = Convert.ToInt32(page);
+            for(int index=(pageInt - 1)*10; index < pageInt * 10 && index < products.Length; index++)
             {
                 NotificationSettings notificationSettings = null;
-                var monitoredProduct = user.MonitoredProducts.FirstOrDefault(p => p.ProductId == product.Id);
-                if (monitoredProduct != null) notificationSettings = monitoredProduct.NotificationSettings; 
-                notificationModel.Add(new NotificationSettingsModel() { Product = product, NotificationSettings = notificationSettings });
+                var monitoredProduct = user.MonitoredProducts.FirstOrDefault(p => p.ProductId == products[index].Id);
+                if (monitoredProduct != null) notificationSettings = monitoredProduct.NotificationSettings;
+                notificationModel.Add(new NotificationSettingsModel() { Product = products[index], NotificationSettings = notificationSettings });
             }
             ViewBag.Products = notificationModel; 
             ViewBag.RequestName = name;
+            ViewBag.PagesCount = Math.Ceiling(products.Count() / 10d);
+            ViewBag.CurrentPage = pageInt;
             return View("Index");
         }
 
 
 
         [HttpPost]
-        public async Task<IActionResult> MonitorProduct(string id, NotificationSettings notificationSettings, string name)
+        public async Task<IActionResult> MonitorProduct(string id, NotificationSettings notificationSettings, string name, string page)
         {
             var user = await GetUser();
+            var product = await _products.GetDocument(id);
             var monitoredProduct = user.MonitoredProducts.FirstOrDefault(m=>m.ProductId == id);
-            if (monitoredProduct == null) user.MonitoredProducts.Add(new MonitoredProduct() { ProductId = id, NotificationSettings = notificationSettings });
+            if (monitoredProduct == null)
+            {
+                user.MonitoredProducts.Add(new MonitoredProduct() { ProductId = id, NotificationSettings = notificationSettings });
+                product.Subscribers.Add(user.Id);
+            }
             else monitoredProduct.NotificationSettings = notificationSettings;
             await _users.Update(user);
-            return RedirectToAction("ShowProduct",new {name = name});
+            await _products.Update(product);
+            return RedirectToAction("ShowProduct", new {name = name, page=page});
         }
 
 

@@ -20,3 +20,5 @@ D:\1. Развитие\Практики\Проекты\Uzhik\Uzhik\obj\Debug\net
 D:\1. Развитие\Практики\Проекты\Uzhik\Uzhik\obj\Debug\netcoreapp2.0\Uzhik.dll
 D:\1. Развитие\Практики\Проекты\Uzhik\Uzhik\obj\Debug\netcoreapp2.0\Uzhik.pdb
 D:\1. Развитие\Практики\Проекты\Uzhik\Uzhik\obj\Debug\netcoreapp2.0\Uzhik.csprojResolveAssemblyReference.cache
+D:\1. Развитие\Практики\Проекты\Uzhik\Uzhik\bin\Debug\netcoreapp2.0\Scrypt.dll
+D:\1. Развитие\Практики\Проекты\Uzhik\Uzhik\bin\Debug\netcoreapp2.0\Scrypt.pdb

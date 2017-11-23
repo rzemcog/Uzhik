@@ -22,19 +22,23 @@ namespace Uzhik.Models
         public string Image { get; set; }
         [BsonElement("link")]
         public string Link { get; set; }
-        [BsonElement("avalaible")]
+       // [BsonElement("avalaible")]
+
+        [BsonElement("available")]
         public bool Available { get; set; }
         [BsonElement("history")]
-        public History History { get; set; }
+        public List<History> History = new List<History>();
 
+        [BsonElement("subscribers")]
+        public List<string> Subscribers = new List<string>();
 
     }
 
     public class History
     {
         [BsonElement("price")]
-        public string Price { get; set; }
-        [BsonElement("time")]
-        public string Time { get; set; }
+        public int Price { get; set; }
+        [BsonElement("date")]
+        public string Date { get; set; }
     }
 }

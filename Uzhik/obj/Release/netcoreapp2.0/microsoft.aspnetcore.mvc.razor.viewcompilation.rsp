@@ -1,0 +1,15 @@
+D:\1. Развитие\Практики\Проекты\Uzhik\Uzhik
+--output-path=obj\Release\netcoreapp2.0\
+--application-name=Uzhik
+--content-root=D:\1. Развитие\Практики\Проекты\Uzhik\Uzhik
+--file=D:\1. Развитие\Практики\Проекты\Uzhik\Uzhik\Views\Account\Authorization.cshtml
+--file=D:\1. Развитие\Практики\Проекты\Uzhik\Uzhik\Views\Main\Index.cshtml
+--file=D:\1. Развитие\Практики\Проекты\Uzhik\Uzhik\Views\PersonalCabinet\PersonalCabinet.cshtml
+--file=D:\1. Развитие\Практики\Проекты\Uzhik\Uzhik\Views\Product\_MonitoredProduct.cshtml
+--file=D:\1. Развитие\Практики\Проекты\Uzhik\Uzhik\Views\Product\_NotificationSettings.cshtml
+--file=D:\1. Развитие\Практики\Проекты\Uzhik\Uzhik\Views\Product\_PriceDynamics.cshtml
+--file=D:\1. Развитие\Практики\Проекты\Uzhik\Uzhik\Views\Product\_Product.cshtml
+--file=D:\1. Развитие\Практики\Проекты\Uzhik\Uzhik\Views\Shared\_FooterLayout.cshtml
+--file=D:\1. Развитие\Практики\Проекты\Uzhik\Uzhik\Views\Shared\_Layout.cshtml
+--file=D:\1. Развитие\Практики\Проекты\Uzhik\Uzhik\Views\_ViewImports.cshtml
+--file=D:\1. Развитие\Практики\Проекты\Uzhik\Uzhik\Views\_ViewStart.cshtml
