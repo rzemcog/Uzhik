@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uzhik", "Uzhik\Uzhik.csproj", "{2C9B6F4B-8F2D-4DE9-9040-B1EAD3013EDA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Uzhik", "Uzhik\Uzhik.csproj", "{2C9B6F4B-8F2D-4DE9-9040-B1EAD3013EDA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scrypt.Net20", "C:\Users\Евгений\Downloads\Scrypt-master\src\Scrypt.Net20\Scrypt.Net20.csproj", "{F27E95A9-FC05-43D0-9801-00C496B497EA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{2C9B6F4B-8F2D-4DE9-9040-B1EAD3013EDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C9B6F4B-8F2D-4DE9-9040-B1EAD3013EDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C9B6F4B-8F2D-4DE9-9040-B1EAD3013EDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F27E95A9-FC05-43D0-9801-00C496B497EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F27E95A9-FC05-43D0-9801-00C496B497EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F27E95A9-FC05-43D0-9801-00C496B497EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F27E95A9-FC05-43D0-9801-00C496B497EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
