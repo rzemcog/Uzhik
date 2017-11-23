@@ -4,6 +4,16 @@ img {
 	height: 80px;
 }
 
+.Site {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.Site-content {
+    flex: 1;
+}
+
 body {
 	background-color: #ededed;
 }
@@ -110,7 +120,15 @@ footer {
 	font: 16px "RobotoMedium", sans-serif;
 	width: 100%;
 }
+.Site {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
 
+.Site-content {
+    flex: 1;
+}
 
 .panel-login {
     border-color: #ccc;

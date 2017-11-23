@@ -10,6 +10,9 @@ using Microsoft.Extensions.Configuration;
 using Uzhik.Models;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Uzhik.Services;
+using Scrypt;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyModel;
 
 namespace Uzhik
 {
@@ -26,21 +29,38 @@ namespace Uzhik
         //настройка сервисов
         public void ConfigureServices(IServiceCollection services)
         {
-            string connection = Configuration.GetConnectionString("RemoteConnection");
+            string mongoConnection = Configuration.GetConnectionString("RemoteConnection");
+            string msssqlConnection = Configuration.GetConnectionString("MsSQLConnection");
             services.AddTransient(provider =>
             {
                 string collectionName = "users";
-                return new MongoContext<User>(connection, collectionName);
+                return new MongoContext<User>(mongoConnection, collectionName);
             });
 
             services.AddTransient(provider =>
             {
-                string collectionName = "items";
-                return new MongoContext<Product>(connection, collectionName);
+                string collectionName = "Items";
+                return new MongoContext<Product>(mongoConnection, collectionName);
             });
 
-           // services.AddTransient<INotificationSender, EmailNotificationSender>();
+            services.AddTransient<INotificationSender, EmailNotificationSender>(provider =>
+            {
+                var smtpConfiguration = Configuration.GetSection("SmtpSettings");
+                string email = smtpConfiguration.GetSection("Email").Value;
+                string host = smtpConfiguration.GetSection("Host").Value;
+                string port = smtpConfiguration.GetSection("Port").Value;
+                string password = smtpConfiguration.GetSection("Password").Value;
+                return new EmailNotificationSender(email, port, host, password);
+            });
 
+            //services.AddDbContext<MsSQLContext>(options =>
+            //{
+            //    options.UseSqlServer(msssqlConnection);
+            //});
+
+            services.AddTransient<ScryptEncoder>();
+
+           
 
             // установка конфигурации подключения
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)

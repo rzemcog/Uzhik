@@ -3,10 +3,9 @@
     ViewData["title"] = "Главная";
     Layout = "_FooterLayout";
 
-   
-}   
 
-<body>
+}
+
 
     <div class="container-fluid">
         <div class="navbar navbar-inverse">
@@ -39,7 +38,14 @@
                 <div class="col-lg-1 col-md-1 col-xs-1 col-sm-1"></div>
                 <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
                     <div class="input-group custom-search-form">
-                        <input type="text" name ="name" class="form-control">
+                        @if (ViewBag.RequestName != null)
+                        {
+                            <input type="text" name="name" class="form-control" value="@ViewBag.RequestName">
+                        }
+                        else
+                        {
+                            <input type="text" name="name" class="form-control">
+                        }
                         <span class="input-group-btn">
                             <input type="submit" name="" value="Найти" class="btn btn-info">
                         </span>
@@ -48,23 +54,100 @@
             </div>
         </div>
     </form>
-       
-        @if (ViewBag.Products != null)
+
+    @if (ViewBag.Products != null)
+    {
+        @foreach (NotificationSettingsModel NSModel in ViewBag.Products)
         {
-
-                @foreach (NotificationSettingsModel NSModel in ViewBag.Products)
-                {
-                    <form asp-action="MonitorProduct" asp-controller="Main">
-                        @Html.Partial("/Views/Product/_Product.cshtml", NSModel);
-                        @Html.Partial("/Views/Product/_NotificationSettings.cshtml", NSModel)
-                    </form>
-                }
-
+            <form asp-action="MonitorProduct" asp-controller="Main">
+                @Html.Partial("/Views/Product/_Product.cshtml", NSModel);
+                @Html.Partial("/Views/Product/_NotificationSettings.cshtml", NSModel)
+            </form>
         }
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5"></div>
+                <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+                    <nav class="numbering">
+                        <ul class="pagination paging">
+                            <li>
+                                @if (ViewBag.CurrentPage != 1)
+                                {
+                                    <a asp-action="ShowProduct" asp-controller="Main" aria-label="Previous"
+                                       asp-all-route-data='new Dictionary<string, string> {{"name", ViewBag.RequestName } ,{ "page", $"{ViewBag.CurrentPage-1}" }}'>
 
+                                        <span aria-hidden="true">&laquo;</span>
+                                        Назад
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a href="#" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                        Назад
+                                    </a>
+                                }
 
-    <br />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="/js/bootstrap.js"></script>
+                            </li>
+                            @for (int i = ViewBag.CurrentPage; i <= ViewBag.CurrentPage + 2 && i <= ViewBag.PagesCount; i++)
+                            {
+                                if (i == ViewBag.CurrentPage)
+                                {
+                                    if (i - 2 >= 1)
+                                    {
+                                        <li>
+                                            <a asp-action="ShowProduct" asp-controller="Main"
+                                               asp-all-route-data='new Dictionary<string, string> { {"name", ViewBag.RequestName }, { "page", $"{i - 2}" } }'>@(i - 2)</a>
+                                        </li>
+                                        <li>
+                                            <a asp-action="ShowProduct" asp-controller="Main"
+                                               asp-all-route-data='new Dictionary<string, string> { {"name", ViewBag.RequestName } , { "page", $"{i - 1}" } }'>@(i - 1)</a>
+                                        </li>
+                                    }
+                                    else if (i - 1 == 1)
+                                    {
+                                        <li>
+                                            <a asp-action="ShowProduct" asp-controller="Main"
+                                               asp-all-route-data='new Dictionary<string, string> {{"name", ViewBag.RequestName } , { "page", $"{i - 1}" }}'>@(i - 1)</a>
+                                        </li>
+                                    }
+                                    <li class="active">
+                                        <a asp-action="ShowProduct" asp-controller="Main"
+                                           asp-all-route-data='new Dictionary<string, string> {{"name", ViewBag.RequestName } , { "page", $"{i}" } }'>@i<span class="sr-only">(current)</span></a>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li>
+                                        <a asp-action="ShowProduct" asp-controller="Main"
+                                           asp-all-route-data='new Dictionary<string, string> {{"name", ViewBag.RequestName } , { "page", $"{i}" } }'>@i</a>
+                                    </li>
+                                }
 
-</body>	
+                            }
+                            <li>
+                                @if (ViewBag.CurrentPage != ViewBag.PagesCount)
+                                {
+                                    <a asp-action="ShowProduct" asp-controller="Main" aria-label="Next"
+                                       asp-all-route-data='new Dictionary<string, string> {{"name", ViewBag.RequestName } , { "page", $"{ViewBag.CurrentPage+1}" }}'>
+                                        Вперед
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a href="#" aria-label="Next">
+                                        Вперед
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                }
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            </div>
+            }
+
+            <br />
+

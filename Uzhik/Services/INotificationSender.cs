@@ -7,6 +7,6 @@ namespace Uzhik.Services
 {
     public interface INotificationSender
     {
-        void Send(string notificationMessage);
+        void Send(string notificationMessage, string client);
     }
 }

@@ -20,12 +20,14 @@
         </div>
 
         <div class="row col-lg-2 col-md-2 col-sm-2 col-xs-2">
-            <div class="price"><p><b>Цена @Model.History.Price &#8381</b></p></div>
+            <div class="price"><p><b>Цена @Model.History[Model.History.Count - 1].Price &#8381</b></p></div>
             <div class="dyn">
                 <button type="button" class="btn-1 btn btn-info" data-toggle="modal" data-target="#modal-2-@Model.Id">Динамика</button>
             </div>
             <div class="unsub">
-                <a asp-action="StopMonitoringProduct" asp-controller="PersonalCabinet" asp-all-route-data='new Dictionary<string,string>{{"Sender", "PersonalCabinet"}, {"Id", @Model.Id}}' ><button type="button" class="btn-1 btn btn-danger">Удалить</button></a>
+                <a asp-action="StopMonitoringProduct" asp-controller="PersonalCabinet" 
+                   asp-all-route-data='new Dictionary<string,string>{{"Sender", "PersonalCabinet"}, {"Id", @Model.Id}, {"page", Convert.ToString(ViewBag.CurrentPage)} }' >
+                <button type="button" class="btn-1 btn btn-danger">Удалить</button></a>
             </div>
         </div>
     </div>

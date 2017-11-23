@@ -18,8 +18,8 @@ namespace Uzhik.ViewModels
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        [Required(ErrorMessage = "Пароль введен неверно")]
         [DataType(DataType.Password)]
+        [Compare("Password", ErrorMessage = "Пароль введен неверно")]
         public string ConfirmPassword { get; set; }
     }
 }

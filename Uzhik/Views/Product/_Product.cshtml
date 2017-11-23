@@ -27,22 +27,27 @@
                     <div class="row col-lg-5 col-md-5 col-sm-5 col-xs-5"></div>
                     <div class="row col-lg-2 col-md-2 col-sm-2 col-xs-2">
                            <input type="hidden" value="@Model.Product.Id" name="id" />
-                            @if (@Model.NotificationSettings == null)
+                            @if (Model.NotificationSettings != null)
                             {
-                                <input id="button-@Model.Product.Id" type="submit" value="Добавить к отслеживанию" class="btn btn-info">
+                                <a asp-action="StopMonitoringProduct" asp-controller="PersonalCabinet" 
+                                   asp-all-route-data='new Dictionary<string,string>{{"Sender", "Main"}, {"Id", @Model.Product.Id}, { "Name", @RequestName}, 
+                                   { "page", Convert.ToString(ViewBag.CurrentPage)} }'>
+                                <input id="button-@Model.Product.Id" type="button" value="Прекратить отслеживание" class="btn btn-info"></a>
                             }
-                            else
-                            {
-                                <a asp-action="StopMonitoringProduct" asp-controller="PersonalCabinet" asp-all-route-data='new Dictionary<string,string>{{"Sender", "Main"}, {"Id", @Model.Product.Id}, { "Name", @RequestName} }'><input id="button-@Model.Product.Id" type="button" value="Прекратить отслеживание" class="btn btn-info"></a>
-                            }
-
                     </div>
                 </div>
             </div>
             <div class="row col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                <div class="price"><p><b>Цена @Model.Product.History.Price &#8381</b></p></div>
+                <div class="price"><p><b>Цена @Model.Product.History[Model.Product.History.Count-1].Price &#8381</b></p></div>
                 <div class="settings">
-                    <button type="button" id="ModalButton-@Model.Product.Id" class="btn-1 btn btn-info" data-toggle="modal" data-target="#modal-@Model.Product.Id"> Настройки </button>
+                    @if (Model.NotificationSettings != null)
+                    {
+                        <button type="button" id="ModalButton-@Model.Product.Id" class="btn-1 btn btn-info" data-toggle="modal" data-target="#modal-@Model.Product.Id"> Настройки </button>
+                    }
+                    else
+                    {
+                        <input id="Modalbutton-@Model.Product.Id" type="button" value="Добавить к отслеживанию" class="btn btn-info" data-toggle="modal" data-target="#modal-@Model.Product.Id"/> 
+                    }
                 </div>
             </div>
         </div>

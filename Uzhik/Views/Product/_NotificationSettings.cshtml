@@ -58,7 +58,7 @@
                             </div>
                             <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
                                 <div class="notcheck">   
-                                    @if (Model.NotificationSettings !=null && Model.NotificationSettings.Availability)
+                                    @if (Model.NotificationSettings == null || Model.NotificationSettings.Availability)
                                     {
                                         <input asp-for="@Model.NotificationSettings.Availability" name="notificationSettings.Availability" 
                                                id="check" checked="checked" type="checkbox" value="true" style="transform: scale(2)">
@@ -100,14 +100,14 @@
                                     {
                                         <select asp-for="@Model.NotificationSettings.Sign" name="notificationSettings.Sign">
                                             <option value="@Sign.LessOrEqual" ><=</option>
-                                            <option value="@Sign.BiggerOrEqual" selected="selected">=</option>
+                                            <option value="@Sign.BiggerOrEqual" selected="selected">=></option>
                                         </select>
                                     }
                                     else
                                     {
                                         <select asp-for="@Model.NotificationSettings.Sign" name="notificationSettings.Sign">
                                             <option value="@Sign.LessOrEqual" selected="selected"><=</option>
-                                            <option value="@Sign.BiggerOrEqual">=</option>
+                                            <option value="@Sign.BiggerOrEqual">=></option>
                                         </select>
                                     }
 
@@ -128,7 +128,7 @@
                           
                             </div>
                         </div>
-
+                        
                         <input type="text" name="name" value="@RequestName" hidden="hidden"/>
                         @*<div class="row">
                             <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
@@ -148,6 +148,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
+                    <input type="hidden" name="page" value="@ViewBag.CurrentPage" />
                     <input type="hidden" value="@Model.Product.Id" name="id" />
                     <button type="submit" class="btn btn-info">Сохранить</button>
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Отменить</button>

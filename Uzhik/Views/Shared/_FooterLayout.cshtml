@@ -43,18 +43,22 @@
    
 
 </head>
-<body>
-
-    @RenderBody()
+<body class="Site">
+    <div class="Site-content">
+        @RenderBody()
+    </div>
     <footer>
-            <div class="container">
-                <div class="row">
-                    <div class="textfooter">
-                        <p>Выполнили студенты группы ИВТ-301</p>
-                        <p>Кавтаскин Павел, Луньков Евгений, Субхангулов Даян</p>
-                    </div>
+        <div class="container">
+            <div class="row">
+                <div class="textfooter">
+                    <p>Выполнили студенты группы ИВТ-301</p>
+                    <p>Кавтаскин Павел, Луньков Евгений, Субхангулов Даян</p>
                 </div>
             </div>
-        </footer>
+        </div>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="~/js/bootstrap.js"></script>
 </body>
 </html>
